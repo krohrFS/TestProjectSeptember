@@ -1,0 +1,5 @@
+﻿  Example.cpp
+  FutureSept.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+  Generating Code...
+  FutureSept.vcxproj -> C:\Users\catov\Programming 1\testproj\FutureSept\x64\Debug\FutureSept.exe

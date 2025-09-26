@@ -1,4 +1,18 @@
 #include <iostream>
+#include <string>
+#include <fstream> // lets us read nad write to a file
+#include <filesystem>
+#include "Example.h"
+
+
+
+// Method to open file and return if it's good
+bool FileExists(std::string name)
+{
+    std::ifstream file(name);
+    return file.good();
+
+}
 
 int main()
 {
@@ -79,11 +93,101 @@ int main()
             git remote -v - to confirm links have been made
 
             git push github master
-
-
-
-    
-    
     */
+
+    std::string readLine = "";
+    // File I/O - reading from and writing to a file
+   
+
+    // We need to open the file - not actually but with code
+    std::ifstream MyReadFile("readme.txt"); // this line assumes that the readme.txt is in the same folder as FutureSept.cpp
+    // So we would need to do one of three things
+    // 1) Provide the true path to the file -this is the absolute
+    // 2) Provide the relative to the file - This is semi difficult, you just need the knowledge of traversing directories like we did in terminal
+    // 3) Move the file - this is the easiest and will always work
+    
+    // Do whatever we're doing
+    while (std::getline(MyReadFile, readLine))
+    {
+        std::cout << readLine << std::endl;
+    }
+    // Then we need to close the file
+    MyReadFile.close();
+
+
+
+    // Writing to a file
+
+    // Open File
+    std::ofstream MyFile("readme.txt");
+
+    // Do whatever we're doing
+    MyFile << "Files can be tricky" << std::endl;;
+
+
+    // Close the file
+    MyFile.close();
+
+
+    // Create a file
+    std::ofstream SecondFile("second.txt", std::ios::app);
+
+    SecondFile << "Did it create" << std::endl;
+
+    SecondFile.close();
+
+
+    // Append to second file
+    SecondFile.open("second.txt", std::ios::app);
+
+    SecondFile << "Whatever\n";
+
+    SecondFile << "Other line";
+
+    SecondFile.close();
+
+    //SecondFile.open("second.txt");
+    //SecondFile << "testing";
+    //SecondFile.close();
+
+    //SecondFile.open("second.txt", std::ios_base::app);
+    //SecondFile << "\n New Line";
+    //SecondFile << "\n Other Line";
+    //SecondFile.close();
+
+
+    Example first; // call default constructor
+
+
+
+    Example newExample("Bob"); // calling the overload constructor
+
+
+    std::string nameVar = "Karl";
+
+    Example newPerson(nameVar); // call overloaded constructor and pass in the nameVar
+
+    std::cout << first.GetName() << std::endl;
+
+    std::cout << newExample.GetName() << std::endl;
+
+    std::cout << newPerson.GetName() << std::endl;
+
+
+    if (FileExists("third.txt"))
+    {
+        // file is good do stuff
+    }
+    else
+    {
+        // file does not exist
+        std::cout << "File does not exist" << std::endl;
+        std::ofstream third("third.txt");
+    }
+
+
+
+
+
 }
 
